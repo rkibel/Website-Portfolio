@@ -1,65 +1,193 @@
-@font-face {
-    font-family: League-Spartan;
-    src: url("LeagueSpartan-Bold.otf") format("opentype");
-} 
-
-*{
+@import url('https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900&display=swap');
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    background: #0000;
+    font-family: 'Poppins', sans-serif;
+    scroll-behavior: smooth;
+    font-size: 62.5%;
 }
 
-.welcome {
-    position: absolute;
+body {
+    min-height: 100vh;
+    background: linear-gradient(#FFCA78, #F4FCEA);
+}
+
+#root {
+    --nav-height: 150px;
+}
+
+header {
+    top: 0;
+    left: 0;
     width: 100%;
-    height: 100%;
-    background: #28464b;
-    color: #ffff;
+    position: relative;
     display: flex;
-    justify-content: left;
+    justify-content: space-between;
     align-items: center;
+    padding: 0px 35px;
+    height: var(--nav-height);
 }
 
-.welcome-content {
-    position: relative;
-    width: 100%;
-    height: 40%;
-    margin-left: 10%;
-    margin-right: 10%;
-    line-height: 1.5;
-    padding-left: 5%;
+header ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 20px;
 }
 
-.welcome-text {
-    position: relative;
-    width: 100%;
-    font-family: "League-Spartan", "Helvetica", "Arial", "sans-serif";
-    line-height: 1.5;
-    font-size: 40px;
-    font-weight: 200;
-}
-
-.welcome-text h2 {
-    font-family: "Libre Baskerville", Times, serif;
-    font-size: 20px;
-    font-weight: 100;
-}
-
-.welcome-text span {
-    font-weight: bold;
-    color: #42d9c8;
-}
-.welcome-text p {
-    margin-top: 10%;
-    font-family:'Times New Roman', Times, serif;
-    width: 100%;
-    font-size: 20px;
-} 
-
-ul {
-    display: inline-block;
+header li {
     list-style: none;
-    padding-right: 30px;
-    line-height: 3;
+    padding: 10px;
+}
+
+header li a {
+    text-decoration: none;
+    color: #000;
+    font-size: 1.5rem;
+}
+
+p {
+    font-size: 1.6rem;
+}
+
+h1, h2, h3 {
+    font-size: 4rem;
+}
+
+.big-heading {
+    font-size: 9rem;
+}
+.medium-heading {
+    font-size: 4rem;
+}
+.small-heading {
+    font-size: 2rem;
+}
+
+.control-width {
+    padding: 0px 50px 0px 150px;
+}
+
+.text {
+    min-width: 50%;
+    margin-bottom: 100px;
+}
+
+.hero {
+    text-align: left;
+    display: flex;
+    height: calc(100vh - var(--nav-height));
+    align-items: end;
+    justify-content: space-between;
+}
+
+.hero p {
+    margin-top: 50px;
+    margin-bottom: 80px;
+}
+
+.hero img {
+    justify-self: center;
+    max-width: 44%;
+}
+
+.left-sidebar {
+    position: fixed;
+    top: 55%;
+    width: 150px;
+}
+
+.left-sidebar ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+}
+
+.left-sidebar li {
+    padding: 7px;
+    list-style: none;
+}
+
+.left-sidebar a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.left-sidebar li:last-of-type {
+    margin-bottom: 25px;
+}
+
+.left-sidebar::after {
+    content: "";
+    display: block;
+    width: 2.5px;
+    height: 40vh;
+    margin: 0px auto;
+    background-color: #000;
+}
+
+.hero-buttons {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.btn {
+    font-size: 1.7rem;
+    font-stretch:extra-expanded;
+    background: transparent;
+    border: none;
+    padding: 1em 1.5em;
+    color: #000;
+    text-transform: uppercase;
+    position: relative;
+    transition: .3s ease;
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 2px;
+    width: 0;
+    background-color: #004B0A;
+    transition: .3s ease;
+}
+
+.btn:hover {
+    color: #000;
+    transition-delay: .3s;
+}
+
+.btn:hover::before {
+    width: 100%;
+}
+
+.btn:hover::after {
+    height: 100%;
+    transition-delay: 0.4s;
+}
+
+@media screen and (max-width: 1080px) {
+    .control-width {
+        padding-left: 100px;
+    }
+    .left-sidebar {
+        width: 100px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .control-width {
+        padding-left: 50px;
+    }
+    .left-sidebar, .hero img {
+        display: none;
+    }
+    .text {
+        width: 100%;
+    }
 }
