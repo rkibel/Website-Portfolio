@@ -17,6 +17,7 @@ body {
 
 #root {
     --nav-height: 150px;
+    --sidebar-width: 200px
 }
 
 p {
@@ -109,7 +110,8 @@ header li a:hover::after {
 }
 
 .control-width {
-    padding: 0 50px 0 150px;
+    padding-right: 50px;
+    padding-left: var(--sidebar-width);
 }
 
 .text {
@@ -134,14 +136,14 @@ header li a:hover::after {
 .hero img {
     justify-self: center;
     align-self: flex-end;
-    max-height: calc(100vh - var(--nav-height));
+    max-height: calc(90vh - var(--nav-height));
     max-width: 50%;
 }
 
 .left-sidebar {
     position: fixed;
     top: 55%;
-    width: 150px;
+    width: var(--sidebar-width);
 }
 
 .left-sidebar ul {
@@ -221,17 +223,14 @@ header li a:hover::after {
 
 
 @media screen and (max-width: 1080px) {
-    .control-width {
-        padding-left: 100px;
-    }
-    .left-sidebar {
-        width: 100px;
+    #root {
+        --sidebar-width: 150px;
     }
 }
 
 @media screen and (max-width: 768px) {
-    .control-width {
-        padding-left: 50px;
+    #root {
+        --sidebar-width: 50px;
     }
     .left-sidebar, .hero img {
         display: none;
@@ -243,7 +242,7 @@ header li a:hover::after {
 }
 
 @media screen and (max-width: 480px) {
-    .control-width {
-        padding: 0 20px;
+    #root {
+        --sidebar-width: 30px;
     }
 }
