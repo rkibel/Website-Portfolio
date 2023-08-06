@@ -19,6 +19,24 @@ body {
     --nav-height: 150px;
 }
 
+p {
+    font-size: 1.6rem;
+}
+
+h1, h2, h3 {
+    font-size: 4rem;
+}
+
+.big-heading {
+    font-size: clamp(5rem, 3.684rem + 7.018vw, 10rem)
+}
+.medium-heading {
+    font-size: 4rem;
+}
+.small-heading {
+    font-size: 2rem;
+}
+
 header {
     top: 0;
     left: 0;
@@ -40,7 +58,7 @@ header ul {
 
 header li {
     list-style: none;
-    padding: 10px;
+    padding: 5px;
 }
 
 header.slide-down{
@@ -51,22 +69,43 @@ header.slide-up{
     transition: transform 0.4s;
 }
 
-p {
-    font-size: 1.6rem;
+header li a {
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 500;
+    text-decoration: none;
+    background: transparent;
+    border: none;
+    padding: 1em 1em;
+    color: #000;
+    position: relative;
+    transition: .3s ease;
 }
 
-h1, h2, h3 {
-    font-size: 4rem;
+header li a::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 2px;
+    width: 0;
+    background-color: #005350;
+    transition: .3s ease;
 }
 
-.big-heading {
-    font-size: clamp(5rem, 3.684rem + 7.018vw, 10rem)
+header li a:hover {
+    color: #000;
+    transition-delay: .3s;
 }
-.medium-heading {
-    font-size: 4rem;
+
+header li a:hover::before {
+    width: 100%;
 }
-.small-heading {
-    font-size: 2rem;
+
+header li a:hover::after {
+    height: 100%;
+    transition-delay: 0.4s;
 }
 
 .control-width {
@@ -129,45 +168,6 @@ h1, h2, h3 {
     height: 40vh;
     margin: 0px auto;
     background-color: #000;
-}
-
-header li a {
-    font-size: 1.5rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    font-weight: 500;
-    text-decoration: none;
-    background: transparent;
-    border: none;
-    padding: 1em 1.5em;
-    color: #000;
-    position: relative;
-    transition: .3s ease;
-}
-
-header li a::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    height: 2px;
-    width: 0;
-    background-color: #005350;
-    transition: .3s ease;
-}
-
-header li a:hover {
-    color: #000;
-    transition-delay: .3s;
-}
-
-header li a:hover::before {
-    width: 100%;
-}
-
-header li a:hover::after {
-    height: 100%;
-    transition-delay: 0.4s;
 }
 
 .hero-buttons {
@@ -234,6 +234,9 @@ header li a:hover::after {
         padding-left: 50px;
     }
     .left-sidebar, .hero img {
+        display: none;
+    }
+    header ul {
         display: none;
     }
 
