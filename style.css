@@ -9,8 +9,10 @@
 }
 
 body {
+    background: linear-gradient(#A6B2D1, #D6F4FF);
     min-height: 100vh;
-    background: linear-gradient(#FFCA78, #F4FCEA);
+    background-attachment: fixed;
+    overflow-x: hidden;
 }
 
 #root {
@@ -21,7 +23,7 @@ header {
     top: 0;
     left: 0;
     width: 100%;
-    position: relative;
+    position: fixed;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -41,10 +43,12 @@ header li {
     padding: 10px;
 }
 
-header li a {
-    text-decoration: none;
-    color: #000;
-    font-size: 1.5rem;
+header.slide-down{
+    transition: transform 0.3s;
+    transform: translateY(calc(var(--nav-height) * -1));
+}
+header.slide-up{
+    transition: transform 0.4s;
 }
 
 p {
@@ -56,7 +60,7 @@ h1, h2, h3 {
 }
 
 .big-heading {
-    font-size: 9rem;
+    font-size: clamp(5rem, 3.684rem + 7.018vw, 10rem)
 }
 .medium-heading {
     font-size: 4rem;
@@ -66,19 +70,20 @@ h1, h2, h3 {
 }
 
 .control-width {
-    padding: 0px 50px 0px 150px;
+    padding: 0 50px 0 150px;
 }
 
 .text {
+    text-align: left;
     min-width: 50%;
-    margin-bottom: 100px;
+    margin:80px 0px 100px 0;
 }
 
 .hero {
-    text-align: left;
+    margin-top: var(--nav-height);
     display: flex;
-    height: calc(100vh - var(--nav-height));
-    align-items: end;
+    min-height: calc(100vh - var(--nav-height));
+    align-items: start;
     justify-content: space-between;
 }
 
@@ -89,7 +94,9 @@ h1, h2, h3 {
 
 .hero img {
     justify-self: center;
-    max-width: 44%;
+    align-self: flex-end;
+    max-height: calc(100vh - var(--nav-height));
+    max-width: 50%;
 }
 
 .left-sidebar {
@@ -111,11 +118,6 @@ h1, h2, h3 {
     list-style: none;
 }
 
-.left-sidebar a {
-    text-decoration: none;
-    color: inherit;
-}
-
 .left-sidebar li:last-of-type {
     margin-bottom: 25px;
 }
@@ -129,47 +131,94 @@ h1, h2, h3 {
     background-color: #000;
 }
 
-.hero-buttons {
-    display: flex;
-    justify-content: space-evenly;
-}
-
-.btn {
-    font-size: 1.7rem;
-    font-stretch:extra-expanded;
+header li a {
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 500;
+    text-decoration: none;
     background: transparent;
     border: none;
     padding: 1em 1.5em;
     color: #000;
-    text-transform: uppercase;
     position: relative;
     transition: .3s ease;
 }
 
-.btn::before {
+header li a::before {
     content: '';
     position: absolute;
     left: 0;
     bottom: 0;
     height: 2px;
     width: 0;
-    background-color: #004B0A;
+    background-color: #005350;
     transition: .3s ease;
 }
 
-.btn:hover {
+header li a:hover {
     color: #000;
     transition-delay: .3s;
 }
 
-.btn:hover::before {
+header li a:hover::before {
     width: 100%;
 }
 
-.btn:hover::after {
+header li a:hover::after {
     height: 100%;
     transition-delay: 0.4s;
 }
+
+.hero-buttons {
+    display: flex;
+    justify-content: start;
+}
+
+.hero-buttons button {
+    padding: 1em 3em;
+    font-size: 1.4rem;
+    margin-right: 50px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 500;
+    color: #000;
+    background-color: #fff;
+    border: none;
+    border-radius: 45px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+    outline: none;
+}
+  
+.hero-buttons button:hover {
+    background-color: #23c483;
+    box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+    color: #fff;
+    transform: translateY(-7px);
+}
+  
+.hero-buttons button:active {
+    transform: translateY(-1px);
+}
+
+
+.left-sidebar li a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.left-sidebar li {
+    transition: transform 0.3s ease;
+}
+
+.left-sidebar li:hover {
+    color: #23c483;
+    transition: 0.25s cubic-bezier(0.645,0.045,0.355,1);
+    transform: translateY(-3px);
+}
+
 
 @media screen and (max-width: 1080px) {
     .control-width {
@@ -187,7 +236,11 @@ h1, h2, h3 {
     .left-sidebar, .hero img {
         display: none;
     }
-    .text {
-        width: 100%;
+
+}
+
+@media screen and (max-width: 480px) {
+    .control-width {
+        padding: 0 20px;
     }
 }

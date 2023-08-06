@@ -24,18 +24,10 @@
                 </svg>
             </a>
             <ul>
-                <li>
-                    <a href="#" class="btn">About Me</a>
-                </li>
-                <li>
-                    <a href="#" class="btn">Experience</a>
-                </li>
-                <li>
-                    <a href="#" class="btn">Skills</a>
-                </li>
-                <li>
-                    <a href="#" class="btn">Projects</a>
-                </li>
+                <li><a href="#">About Me</a></li>
+                <li><a href="#">Experience</a></li>
+                <li><a href="#">Skills</a></li>
+                <li><a href="#">Projects</a></li>
             </ul>
         </header>
         <div orientation="left" class="left-sidebar">
@@ -91,26 +83,37 @@
                         <h2 class="big-heading">Ron Kibel</h2>
                         <p>I'm a software engineer looking to connect and talk about tech. Currently completing my bachelor's in Computer Science and Applied Math at the University of California, Santa Barbara. </p>
                         <div class="hero-buttons">
-                            <button class="btn">
-                                Resume
-                            </button>
-                            <button class="btn">
-                                Contact
-                            </button>
+                            <button>Resume</button>
+                            <button>Contact</button>
                         </div>
                     </div>
-                    <img src="profile.png">
+                    <img src="profile.svg">
                 </section>
-                <section class="about">
-                    <h2 class="medium-heading">About Me</h2>
-                    <p class="big-heading">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores nihil animi aperiam fugiat ea mollitia blanditiis quisquam, enim quidem. Quis voluptas odio excepturi iusto labore a deserunt nam porro dolore?</p>
+                <!--<section class="about">
+                    <h2 class="big-heading">About Me</h2>
+                    <p class="small-heading">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores nihil animi aperiam fugiat ea mollitia blanditiis quisquam, enim quidem. Quis voluptas odio excepturi iusto labore a deserunt nam porro dolore?</p>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores nihil animi aperiam fugiat ea mollitia blanditiis quisquam, enim quidem. Quis voluptas odio excepturi iusto labore a deserunt nam porro dolore?</p>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores nihil animi aperiam fugiat ea mollitia blanditiis quisquam, enim quidem. Quis voluptas odio excepturi iusto labore a deserunt nam porro dolore?</p>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores nihil animi aperiam fugiat ea mollitia blanditiis quisquam, enim quidem. Quis voluptas odio excepturi iusto labore a deserunt nam porro dolore?</p>
                 
-                </section>
+                </section>-->
             </main>
         </div>
     </div>
 </body>
+<script>
+    window.onscroll = function() {
+        var header = document.querySelector('header');
+        var navHeight = parseFloat(getComputedStyle(header).getPropertyValue('--nav-height'));
+        navHeight -= 50;
+        if (window.scrollY > navHeight) {
+            header.classList.remove("slide-up");
+            header.classList.add("slide-down");
+        }
+        else {
+            header.classList.remove("slide-down");
+            header.classList.add("slide-up");
+        }
+    }
+</script>
 </html>
